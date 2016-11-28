@@ -1,0 +1,89 @@
+---
+title: "Rejection Likelihood"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# EDA
+
+### DTI
+- The outliers make it hard to interpret the boxplots. 
+- Using a log transformation (after a slight jitter of 0.0001).
+  - Still see outliers
+  - Distributions easier to comprehend; similar spreads
+  - See a perfect linear separation for a range of values in status "0".
+
+### Loan Amount
+- Similar output to the DTI; hard to interpret, plenty of outliers.
+- Log transformation shows more comparable distributions.
+
+### DTI vs. Loan Amnt
+- No correlation to report.
+
+### State
+- Not much variation across states.
+
+### Employment
+- Clear indication that employment is associated with loan status.
+
+### Month
+- Seasonality does not seem to play a part in loan granting.
+
+### Year
+- More loans seem to be granted as the years go by
+
+
+
+
+
+
+
+
+# Modeling - Inference (use z & p-values and confidence intervals)
+- Standard Fit AIC: 72446
+  - Contains linear separation; remove appropriate DTI or Loan_Amnt cases that cause it.
+- Log transformed Fit AIC: 71825
+- Log transform is a slightly better fit:
+  - DTI and Loan_Amnt play factor.
+  - Compared to 2007, the year plays a role.
+  - State does not.
+  - Increased employment does.
+  - Month may play a small role (which months are important?).
+  - Interaction of loan_amnt*dti is important
+- Check residuals and other diagnostics
+
+
+# Prediction (set.seed)
+Standard Logistic: 
+  - ROC 10: 0.9236387
+  - Perfect separation error
+
+Log Transformed Logistic: 
+  - ROC 10: 0.9251618
+
+Probit Logistic: 
+  - ROC 10: 0.9232691
+  - Perfect separation error
+  - Non-convergence error
+
+Probit Transformed Logistic:
+  - ROC 10: 0.9254459
+  
+LDA (rerun with interaction):
+  - ROC 10: 0.8904304
+
+GAM (rerun with interaction): 
+  - ROC 10: 0.8827233
+
+RandomForest (rerun with interaction):
+  - ROC 10, Node 1, ntree 50, 0.9287493
+  - ROC 10, Node 2, ntree 100, 0.9368183
+  
+Logistic-Lasso
+  - ROC 10, 
+  
+Logistic-Ridge
+  - ROC 10, 
