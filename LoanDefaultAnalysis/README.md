@@ -1,3 +1,5 @@
 Clean data and get sample data
 
-build a logitic model as first step
+Build a logitic model as first step
+ - correlation plot -- delete "loan amount"
+ - summary(logit1) -- delete "dti" cuz not siginificant
