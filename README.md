@@ -35,3 +35,22 @@ Others)
 	- Any exemplary loans that differ from each other?
 	- Can rates be made differently? Or payment plans?
 	- Inference: Who gets loans and who doesn't?
+	
+
+Written Report: Due 12/12 @ 5pm:
+(Double Spaced, Typed, No page limit)
+
+* Introduction / Background
+* Objectives (clear story)
+* Material & Methods
+  * Data Source & Descriptions
+  * Analytical Plans
+* Results
+* Sensitivity Analysis (to Validate Assumptions)
+* Conclusions
+  * Summary of Findings
+  * Limitations of Study
+* References
+* Appendix
+
+
